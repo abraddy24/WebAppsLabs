@@ -35,36 +35,59 @@ var binarySearch = function binarySearch(arr, val) {
  */
 var countTags = function countTags(items) {
    // Declare your local variables here. One was done for you.
-   var tagCounts;
-   var arr = []
-   var i = 0;
-   for(item in items){
-      if(Array.isArray(items[i] === true)){
-         
+   var tagCounts = new Object();
+   var arr = [];
+   if(items.length === 0){
+      return tagCounts;
+   }else{
+
+      for(var i = 0; i < items.length; i++){
+
+         if(items[i].hasOwnProperty('tags')===false){
+         }else{
+
+               if(Array.isArray(items[i].tags)===false){
+               }else{
+
+                  for(var j = 0; j < items[i].tags.length; j++){
+
+                     if (tagCounts.hasOwnProperty(items[i].tags[j])===false){
+                        tagCounts[items[i].tags[j]] = 1;
+                     }else{
+                     tagCounts[items[i].tags[j]]+= 1;
+                     }
+                  }
+               }
+            }
+         }
       }
-   }
-   }
    return tagCounts;
 };
 
-/*
- * EXTRACT HASHTAGS
- */
+// /*
+//  * EXTRACT HASHTAGS
+//  */
 var extractHashTags = function extractHashTags(str) {
    var arr = [];
+   var r2 = []
    var i = 0;
-   var m = str.match(/#\w+/g);
-   if(arr.length === 0){
-      arr.push(m);
+   var m = str.match(/#([a-z]+)/gi);
+   var temp;
+
+   if(m == undefined){
+      return r2;
    }else{
-      while(i <= arr.length){
-         if (m === arr[i]){
-            i++;
-            continue;
-         }else{
-            arr.push(m);
-         }
+      for(i =0; i < m.length; i++){
+            arr[i] = m[i].replace('#',"");
+            temp = arr[i];
+         
+            for(var j = 0; j < arr.length; j++){
+               if(temp === arr[j] && j !== i){
+                  delete arr[j];
+               }
+            }
       }
    }
+
    return arr;
 };
