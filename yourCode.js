@@ -7,28 +7,27 @@
  * BINARY SEARCH
  */
 var binarySearch = function binarySearch(arr, val) {
-   var lo = 0, hi = arr.length, mid = Math.floor((lo + hi)/2);
 
-   // You may need to add things here
+   var startIndex = 0;
+   var stopIndex = arr.length - 1;
+   var middle = Math.floor((stopIndex+startIndex)/2)
 
-
-   while (lo <= hi) {     // You should change this with a proper condition
-      // You will need to add things here
-      if((mid === hi || mid === lo) && arr[mid] !== val){
-         return false
+   while (arr[middle] != val && startIndex < stopIndex){
+      if (val < arr[middle]){
+         stopIndex = middle -1;
+      } else if (val > arr[middle]){
+         startIndex = middle+1;
       }
-      if(arr[mid] > val){
-         end = mid;
-      } else if(arr[mid] < val) {
-         lo = mid;
-      }else {
-         return mid;
-      }
+      middle = Math.floor((stopIndex+startIndex)/2);
    }
 
-   // You may need to add things here
+   return (arr[middle] === val);
 
 };
+
+
+
+
 
 /*
  * COUNTING TAGS
