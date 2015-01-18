@@ -36,10 +36,14 @@ var binarySearch = function binarySearch(arr, val) {
 var countTags = function countTags(items) {
    // Declare your local variables here. One was done for you.
    var tagCounts;
-
-   // Add your code here
-
-
+   var arr = []
+   var i = 0;
+   for(item in items){
+      if(Array.isArray(items[i] === true)){
+         
+      }
+   }
+   }
    return tagCounts;
 };
 
