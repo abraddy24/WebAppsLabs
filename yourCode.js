@@ -2,7 +2,7 @@
  * Name 1: YourNameHere
  * Name 2: YourNameHere
  */
-// All your code will go here
+// All your code will go here.
 var makeStack = function() {
 
 
