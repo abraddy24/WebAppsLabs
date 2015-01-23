@@ -17,8 +17,11 @@ describe('Your code for stacks', function() {
    it('actually defines a function makeStack', function() {
     expect(makeStack).to.be.a('function')});
 
-   it('returns an object', function() {
-    expect(stack).to.be.a('object');
-   });
    // Add more "it" sections below
+});
+describe('Your makeStack function', function() {
+  var stack = makeStack();
+  it('returns an object', function() {
+    expect(stack).to.be.a('object');
+  });
 });
