@@ -19,6 +19,7 @@ describe('Your code for stacks', function() {
 
    // Add more "it" sections below
 });
+
 describe('Your makeStack function', function() {
   var stack = makeStack();
   it('returns an object', function() {
@@ -28,5 +29,20 @@ describe('Your makeStack function', function() {
     ['push', 'pop', 'isEmpty'].forEach(function(key) {
         expect(stack[key]).to.be.a('function');
     });
+  });
 });
+
+describe('Stack methods:', function() {
+    var stack;
+    beforeEach(function() {
+        // This ensures every test sees a fresh empty stack
+        stack = makeStack();
+    });
+    it('isEmpty returns true for a new stack', function() {
+        expect(stack.isEmpty()).to.equal(true);
+    });
+    it('isEmpty returns false if an element is pushed', function() {
+        stack.push(2);
+        expect(stack.isEmpty()).to.equal(false);
+    });
 });
