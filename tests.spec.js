@@ -59,4 +59,11 @@ describe('Stack methods:', function() {
     stack.push(2);
     expect(function() { stack.pop(); }).to.not.throw(Error);
   });
+  
+  it('a pop following a push should return the pushed element', function() {
+    // we generate a random number to use as element.
+    var v = Math.random();
+    stack.push(v);
+    expect(stack.pop()).to.equal(v);
+});
 });
