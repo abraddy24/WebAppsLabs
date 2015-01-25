@@ -50,4 +50,10 @@ describe('Stack methods:', function() {
   it('push returns the stack object', function() {
     expect(stack.push()).to.equal(stack);
   });
+
+  it('pop should error on empty stack', function() {
+    expect(function() { stack.pop(); }).to.throw(Error);
+  });
+
+  
 });
