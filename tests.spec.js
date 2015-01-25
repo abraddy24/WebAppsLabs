@@ -45,4 +45,9 @@ describe('Stack methods:', function() {
         stack.push(2);
         expect(stack.isEmpty()).to.equal(false);
     });
+
+
+  it('push returns the stack object', function() {
+    expect(stack.push()).to.equal(stack);
+  });
 });
