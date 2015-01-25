@@ -73,4 +73,27 @@ describe('Stack methods:', function() {
    expect(stack.pop()).to.equal(v2);
    expect(stack.pop()).to.equal(v1);
   });
+  it('a randomized set of pushes and pops should behave properly', function() {
+      var iters = 10, steps = 200, iter, step;
+      var noItems, randomNum;
+      for (iter = 0; iter < 10; iter += 1) {
+         stack = makeStack();
+         randomNum = Math.random();
+         noItems = 0;
+         for (step = 0; step < 200; step += 1) {
+            if (Math.random() > 0.5) { // 50-50 do a push
+               noItems += 1;
+               stack.push(noItems + randomNum);
+            } else { // or do a pop
+               if (noItems === 0) {
+                  expect(function() { stack.pop(); }).to.throw(Error);
+               } else {
+                  expect(stack.pop()).to.equal(noItems + randomNum);
+                  noItems -= 1;
+               }
+            }
+         }
+      }
+   });
+  
 });
