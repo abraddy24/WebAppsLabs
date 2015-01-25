@@ -55,5 +55,8 @@ describe('Stack methods:', function() {
     expect(function() { stack.pop(); }).to.throw(Error);
   });
 
-  
+  it('pop should not error on nonempty stack', function() {
+    stack.push(2);
+    expect(function() { stack.pop(); }).to.not.throw(Error);
+  });
 });
