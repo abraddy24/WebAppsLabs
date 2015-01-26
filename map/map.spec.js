@@ -47,11 +47,19 @@ describe('Map methods:', function(){
    beforeEach(function(){
       map = makeMap();
    });
-   it('has returns boolean', function(){
-      map.a = 5;
+   it('has returns true where true', function(){
+      map.add('a', 5);
       expect(map.has('a')).to.equal(true);
    });
    it('has returns false when necessary', function(){
       expect(map.has('a')).to.equal(false);
    });
+   it('lookup function returns proper value when key is called', function(){
+      map.add('e', 9);
+      console.log(map.e);
+      expect(map.lookup('e')).to.equal(9);
+   });
+   it('lookup function retruns false when key is not in map', function(){
+      expect(function(){map.lookup('q');}).to.throw(Error);
+   })
 });

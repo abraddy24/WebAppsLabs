@@ -9,7 +9,7 @@ var makeMap = function() {
    // This object should contain the methods you want to expose:
    var o = {
       has:  function(key){
-         if(key in o){
+         if(key in storedPairs){
             return true;
          }
          return false;
@@ -19,7 +19,7 @@ var makeMap = function() {
          if(o.has(key)===false){
             throw new Error('Key does not exist');
          }
-         return o.key;
+         return storedPairs[key];
       },
 
       add: function(key,value){
@@ -27,24 +27,22 @@ var makeMap = function() {
          {
             throw new Error('Attempt to add key that already exists');
          }
-         o.key = value;
-         storedPairs.key = value;
-         return o;
+         storedPairs[key] = value;
+         return storedPairs;
       },
 
       update: function(key,value){
          if(o.has(key)===false){
             throw new Error('Key does not exist');
          }
-         o.key = value;
-         return o;
+         storedPairs.key = value;
+         return storedPairs;
       },
 
       remove: function(key){
          if(o.has(key)===false){
             throw new Error('Key does not exist');
          }
-         delete(o.key);
          delete(storedPairs.key);
       }
    };
