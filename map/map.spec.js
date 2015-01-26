@@ -78,4 +78,13 @@ describe('Map methods:', function(){
       map.update('w',9);
       expect(map.lookup('w')).to.equal(9);
    });
+   it('remove throws error if updating nonexistant key',function(){
+      expect(function(){map.remove('q',8);}).to.throw(Error);
+   });
+   it('remove acutally removes key and value from map', function(){
+      map.add('t',2);
+      expect(map.lookup('t')).to.equal(2);
+      map.remove('t');
+      expect(function(){map.lookup('t');}).to.throw(Error);
+   });
 });

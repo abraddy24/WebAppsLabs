@@ -43,7 +43,7 @@ var makeMap = function() {
          if(o.has(key)===false){
             throw new Error('Key does not exist');
          }
-         delete(storedPairs.key);
+         delete(storedPairs[key]);
       }
    };
    // Use this object to store the key-value pairs:
