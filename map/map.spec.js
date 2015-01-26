@@ -61,5 +61,13 @@ describe('Map methods:', function(){
    });
    it('lookup function retruns false when key is not in map', function(){
       expect(function(){map.lookup('q');}).to.throw(Error);
-   })
+   });
+   it('add actually adds correctly', function(){
+      map.add('f',2);
+      expect(map.has('f')).to.equal(true);
+   });
+   it('add throws error if adding same key',function(){
+      map.add('q',3);
+      expect(function(){map.add('q');}).to.throw(Error);
+   });
 });
