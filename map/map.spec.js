@@ -70,4 +70,12 @@ describe('Map methods:', function(){
       map.add('q',3);
       expect(function(){map.add('q');}).to.throw(Error);
    });
+   it('update throws error if updating nonexistant key',function(){
+      expect(function(){map.update('q',8);}).to.throw(Error);
+   });
+   it('update actually updates key value', function(){
+      map.add('w',3);
+      map.update('w',9);
+      expect(map.lookup('w')).to.equal(9);
+   });
 });

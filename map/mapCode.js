@@ -35,7 +35,7 @@ var makeMap = function() {
          if(o.has(key)===false){
             throw new Error('Key does not exist');
          }
-         storedPairs.key = value;
+         storedPairs[key] = value;
          return storedPairs;
       },
 
