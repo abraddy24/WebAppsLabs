@@ -4,8 +4,7 @@
  * Contains implementation for a "task" "class"
  */
 
-var Task ;
-var proto;
+var Task, proto;
 
 // Helper method. You should not need to change it.
 // Use it in makeTaskFromString
@@ -26,27 +25,27 @@ function processString(s) {
  *       Constructors
  */
 
-function makeNewTask () {
-
-};
-
-function makeTaskFromObject( o )
- {
-
+function makeNewTask() {
+   "use strict";
 }
 
-function makeTaskFromString(str)
-{}
+function makeTaskFromObject(o) {
+   "use strict";
+}
+
+function makeTaskFromString(str){
+   "use strict";
+}
 
 
 /*
  *       Prototype / Instance methods
  */
 
-proto={
-   //Add instance methods here
+proto = {
+   // Add instance methods here
 
-}
+};
 
 
 
