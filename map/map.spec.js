@@ -42,3 +42,16 @@ describe('Your makeMap function',function(){
 });
 
 
+describe('Map methods:', function(){
+   var map;
+   beforeEach(function(){
+      map = makeMap();
+   });
+   it('has returns boolean', function(){
+      map.a = 5;
+      expect(map.has('a')).to.equal(true);
+   });
+   it('has returns false when necessary', function(){
+      expect(map.has('a')).to.equal(false);
+   });
+});
