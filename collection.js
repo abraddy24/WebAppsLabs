@@ -13,18 +13,18 @@ Task = require("./task");
  */
 
 function makeNewCollection(arr) {
-
-};
+	"use strict";
+}
 
 
 /*
  *       Prototype / Instance methods
  */
 
-proto={
-   //Add instance methods here
+proto = {
+   // Add instance methods here
 
-}
+};
 
 
 
