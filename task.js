@@ -84,6 +84,15 @@ proto = {
       return this.completedTime !== null;
    },
 
+    toggleCompleted: function toggleCompleted(){
+      "use strict";
+      if (this.completedTime === null){
+         this.completedTime = new Date();
+      } else {
+         this.completedTime = null;
+      }
+      return this;
+   },
 };
 
 
