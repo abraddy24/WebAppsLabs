@@ -105,6 +105,14 @@ proto = {
       }, this);
       return bool;
    },
+
+    addTag: function addTag(s){
+      "use strict";
+      if (this.hasTag(s) === false){
+         this.tags.push(s);
+      }
+      return this;
+   },
 };
 
 
