@@ -27,22 +27,28 @@ function processString(s) {
 
 function makeNewTask() {
    "use strict";
-   var id = Object.defineProperty(task, "id"{
-      value: 1,
+   var task;
+   task = Object.create(proto);
+   task.title = "";
+   task.completedTime = null;
+   Object.defineProperty(task, "id", {
+      value: incVal(),
       enumerable: true,
       writable: false,
       configurable: false
    });
-   var title = task.title = "";
-   var completedTime = task.completedTime = null;
-   var tags = Object.defineProperty(task, "tags" {
-      value: [];
+   Object.defineProperty(task, "tags", {
+      value: incVal(),
       enumerable: false,
       writable: false,
       configurable: false
    });
-   Object.preventExtensions;
-   return {id: id+=1, title: title, completedTime: completedTime, tags: tags};
+   function incVal(){
+      val += 1;
+      return val;
+   }
+   Object.preventExtensions(task);
+   return task;
 }
 
 function makeTaskFromObject(o) {
