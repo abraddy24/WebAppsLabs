@@ -72,6 +72,12 @@ function makeTaskFromString(str){
 
 proto = {
    // Add instance methods here
+    setTitle: function setTitle(s){
+      "use strict";
+      s.trim();
+      this.title = s;
+      return this;
+   },
 
 };
 
