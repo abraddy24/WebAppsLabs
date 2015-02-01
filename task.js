@@ -72,19 +72,19 @@ function makeTaskFromString(str){
 
 proto = {
    // Add instance methods here
-    setTitle: function setTitle(s){
+   setTitle: function setTitle(s){
       "use strict";
       s.trim();
       this.title = s;
       return this;
    },
 
-    isCompleted: function isCompleted(){
+   isCompleted: function isCompleted(){
       "use strict";
       return this.completedTime !== null;
    },
 
-    toggleCompleted: function toggleCompleted(){
+   toggleCompleted: function toggleCompleted(){
       "use strict";
       if (this.completedTime === null){
          this.completedTime = new Date();
@@ -94,7 +94,7 @@ proto = {
       return this;
    },
 
-    hasTag: function hasTag(s){
+   hasTag: function hasTag(s){
       "use strict";
       var bool;
       bool = false;
@@ -106,7 +106,7 @@ proto = {
       return bool;
    },
 
-    addTag: function addTag(s){
+   addTag: function addTag(s){
       "use strict";
       if (this.hasTag(s) === false){
          this.tags.push(s);
@@ -114,14 +114,14 @@ proto = {
       return this;
    },
 
-    removeTag: function removeTag(s){
+   removeTag: function removeTag(s){
       "use strict";
       if (this.hasTag(s) === true){
          this.tags.splice(this.tags.indexOf(s), 1);
       }
    },
 
-    toggleTag: function toggleTag(s){
+   toggleTag: function toggleTag(s){
       "use strict";
       if (this.hasTag(s) === true){
          this.removeTag(s);
@@ -131,13 +131,19 @@ proto = {
       return this;
    },
 
-    addTags: function addTags(a){
+   addTags: function addTags(a){
       "use strict";
       a.forEach(function(tag, i){
          this.addTag(tag);
       }, this);
    },
 
+   toggleTags: function toggleTags(a){
+      "use strict";
+      a.forEach(function(tag, i){
+         this.toggleTag(tag);
+      }, this);
+   },
 
 };
 
