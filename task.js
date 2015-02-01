@@ -79,6 +79,11 @@ proto = {
       return this;
    },
 
+    isCompleted: function isCompleted(){
+      "use strict";
+      return this.completedTime !== null;
+   },
+
 };
 
 
