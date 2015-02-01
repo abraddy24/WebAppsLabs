@@ -113,6 +113,13 @@ proto = {
       }
       return this;
    },
+
+   removeTag: function removeTag(s){
+      "use strict";
+      if (this.hasTag(s) === true){
+         this.tags.splice(this.tags.indexOf(s), 1);
+      }
+   },
 };
 
 
