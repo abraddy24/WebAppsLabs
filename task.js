@@ -114,14 +114,14 @@ proto = {
       return this;
    },
 
-   removeTag: function removeTag(s){
+    removeTag: function removeTag(s){
       "use strict";
       if (this.hasTag(s) === true){
          this.tags.splice(this.tags.indexOf(s), 1);
       }
    },
 
-   toggleTag: function toggleTag(s){
+    toggleTag: function toggleTag(s){
       "use strict";
       if (this.hasTag(s) === true){
          this.removeTag(s);
@@ -129,6 +129,13 @@ proto = {
          this.tags.push(s);
       }
       return this;
+   },
+
+    addTags: function addTags(a){
+      "use strict";
+      a.forEach(function(tag, i){
+         this.addTag(tag);
+      }, this);
    },
 
 
