@@ -120,6 +120,18 @@ proto = {
          this.tags.splice(this.tags.indexOf(s), 1);
       }
    },
+
+   toggleTag: function toggleTag(s){
+      "use strict";
+      if (this.hasTag(s) === true){
+         this.removeTag(s);
+      }else {
+         this.tags.push(s);
+      }
+      return this;
+   },
+
+
 };
 
 
