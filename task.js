@@ -93,6 +93,18 @@ proto = {
       }
       return this;
    },
+
+    hasTag: function hasTag(s){
+      "use strict";
+      var bool;
+      bool = false;
+      this.tags.forEach(function(tag, i){
+         if (tag === s){
+            bool = true;
+         }
+      }, this);
+      return bool;
+   },
 };
 
 
