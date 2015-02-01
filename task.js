@@ -144,7 +144,14 @@ proto = {
          this.toggleTag(tag);
       }, this);
    },
-
+   clone: function clone(){
+      "use strict";
+      var c = Task.new();
+      c.title = this.title;
+      c.completedTime = this.completedTime;
+      c.tags = this.tags;
+      return c;
+   }
 };
 
 
