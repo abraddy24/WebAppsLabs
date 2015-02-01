@@ -10,7 +10,8 @@ var Task, proto;
 // Use it in makeTaskFromString
 function processString(s) {
    "use strict";
-   var tags, title;
+   var tags, title, c1;
+   
 
    tags = [];
    title = s.replace(/\s*#([a-zA-Z]+)/g, function(m, tag) {
@@ -21,6 +22,15 @@ function processString(s) {
    return { title: title, tags: tags };
 }
 
+function makeCounter() {
+      var c = 0;
+      return function count() {
+         c += 1;
+         return c;
+      }
+   }
+   c1 = makeCounter();
+
 /*
  *       Constructors
  */
@@ -28,26 +38,22 @@ function processString(s) {
 function makeNewTask() {
    "use strict";
    var task, val;
-   val = 0;
+   val = c1();
    task = Object.create(proto);
    task.title = "";
    task.completedTime = null;
    Object.defineProperty(task, "id", {
-      value: incVal(),
+      value: val,
       enumerable: true,
       writable: false,
       configurable: false
    });
    Object.defineProperty(task, "tags", {
-      value: incVal(),
+      value: [],
       enumerable: false,
       writable: false,
       configurable: false
    });
-   function incVal(){
-      val += 1;
-      return val;
-   }
    Object.preventExtensions(task);
    return task;
 }
@@ -56,13 +62,17 @@ function makeTaskFromObject(o) {
    "use strict";
    var task = Task.new();
    task.setTitle(o.title);
-   task.addTag(o.tag);
+   task.addTags(o.tags);
    return task;
 }
 
 function makeTaskFromString(str){
    "use strict";
-   return Task.fromObject(processString(str));
+   var o;
+   
+   o = makeTaskFromObject(processString(str));
+   console.log(o);
+   return o;
 }
 
 

@@ -4,7 +4,7 @@
  * Test file for your task class
  */
 var expect, Task;
-
+/*eslint-env node, mocha */
 expect = require('./chai.js').expect;
 
 Task = require('./task.js');
@@ -12,11 +12,13 @@ Task = require('./task.js');
 
 function randomStr()
 {
-    var text = "";
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+	var text, possible;
+    text = "";
+    possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-    for( var i=0; i < 5; i++ )
+    for (var i = 0; i < 5 ;i += 1) {
         text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
 
     return text;
 }
@@ -29,7 +31,7 @@ describe('Your makeNewTask function', function() {
 		expect(t).to.be.a('object');
 	});
 	it('returns an object with keys', function() {
-		expect(t).to.have.ownProperty('title','completedTime', 'tags', 'id');
+		expect(t).to.have.ownProperty('title', 'completedTime', 'tags', 'id');
 	});
 });
 
@@ -39,8 +41,8 @@ describe('Your makeTaskFromObject function', function(){
 	tag1 = randomStr();
 	tag2 = randomStr();
 	s = randomStr();
-	tags = [tag1, tag2];
-	obj = {'title': s, 'tags': tags};
+	tags = [ tag1, tag2 ];
+	obj = { 'title': s, 'tags': tags };
 	task = Task.fromObject(obj);
 	it('returns an object', function() {
 		expect(task).to.be.a('object');
@@ -67,7 +69,7 @@ describe('Your makeTaskFromString function', function() {
 	tag1 = "bob";
 	tag2 = "phillip";
 	all = s + "#" + tag1 + "#" + tag2;
-	tags = [tag1, tag2];
+	tags = [ tag1, tag2 ];
 	task = Task.fromString(all);
 
 
@@ -90,5 +92,24 @@ describe('Your makeTaskFromString function', function() {
 	});
 });
 
-
-
+describe('Task methods:', function(){
+	var task1, task2, task3, s1, s2;
+	beforeEach(function(){
+		s1 = randomStr();
+		s2 = randomStr();
+		task1 = Task.new();
+	});
+	it('assigns id value correctly', function(){
+		task2 = Task.new();
+		expect(task2.id).to.equal(task1.id + 1);
+	});
+	it('sets title correctly', function(){
+		task1.setTitle(s1);
+		expect(task1.title).to.equal(s1);
+	});
+	it('checks completeness', function() {
+		expect(task1.isCompleted(task1.completedTime)).to.equal(false);
+		task1.toggleCompleted();
+		expect(task1.isCompleted(task1.completedTime)).to.equal(true);
+	});
+});
