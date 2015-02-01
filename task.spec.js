@@ -42,8 +42,6 @@ describe('Your makeTaskFromObject function', function(){
 	tags = [tag1, tag2];
 	obj = {'title': s, 'tags': tags};
 	task = Task.fromObject(obj);
-	console.log(task);
-
 	it('returns an object', function() {
 		expect(task).to.be.a('object');
 	});
@@ -62,4 +60,35 @@ describe('Your makeTaskFromObject function', function(){
 		expect(task.tags).to.include(tag2);
 	});
 });
+
+describe('Your makeTaskFromString function', function() {
+	var s, task, tag1, tag2, tags, all;
+	s = randomStr();
+	tag1 = "bob";
+	tag2 = "phillip";
+	all = s + "#" + tag1 + "#" + tag2;
+	tags = [tag1, tag2];
+	task = Task.fromString(all);
+
+
+	it('returns object', function() {
+		expect(task).to.be.a('object');
+	});
+
+	it('returns an object with keys', function() {
+		expect(task).to.have.ownProperty('title', 'completedTime', 'tags', 'id');
+	});
+
+	it('returns object with correct title', function() {
+		expect(task.title).to.equal(s);
+	});
+
+	it('returns obect with correct tags', function() {
+		expect(task.tags).to.have.length(2);
+		expect(task.tags).to.include(tag1);
+		expect(task.tags).to.include(tag2);
+	});
+});
+
+
 
