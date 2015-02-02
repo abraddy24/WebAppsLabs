@@ -112,4 +112,19 @@ describe('Task methods:', function(){
 		task1.toggleCompleted();
 		expect(task1.isCompleted(task1.completedTime)).to.equal(true);
 	});
+	it('checks to see if tag added and exists', function(){
+		task1.addTag("bill");
+		expect(task1.hasTag("bill")).to.equal(true);
+	});
+	it('checks to see if tag is properly removed', function(){
+		task1.addTag("bob");
+		expect(task1.hasTag("bob")).to.equal(true);
+		task1.removeTag("bob");
+		expect(task1.hasTag("bob")).to.equal(false);
+	});
+	it("does not allow to add same key", function(){
+		task3 = Task.new();
+		task3.addTag("hello");
+		expect(function() {task3.addTag("hello")}).to.throw(Error);
+	});
 });

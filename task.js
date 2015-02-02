@@ -109,7 +109,7 @@ proto = {
       var bool;
       bool = false;
       this.tags.forEach(function(tag, i){
-         if (tag === s){
+         if (tag == s){
             bool = true;
          }
       }, this);
@@ -120,6 +120,8 @@ proto = {
       "use strict";
       if (this.hasTag(s) === false){
          this.tags.push(s);
+      }else{
+         throw new Error("tag already exists");
       }
       return this;
    },
@@ -128,6 +130,8 @@ proto = {
       "use strict";
       if (this.hasTag(s) === true){
          this.tags.splice(this.tags.indexOf(s), 1);
+      }else{
+         throw new Error("tag does not exist");
       }
    },
 
