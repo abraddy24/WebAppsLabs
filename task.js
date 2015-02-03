@@ -154,8 +154,8 @@ proto = {
 
    toggleTags: function toggleTags(a){
       "use strict";
-      a.forEach(function(tag, i){
-         this.toggleTag(tag);
+      a.forEach(function(t, i){
+         this.toggleTag(t);
       }, this);
    },
    clone: function clone(){

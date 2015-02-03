@@ -93,7 +93,7 @@ describe('Your makeTaskFromString function', function() {
 });
 
 describe('Task methods:', function(){
-	var task1, task2, task3, task4, s1, s2;
+	var task1, task2, task3, task4, task5, task6, s1, s2, arr, arr2;
 	beforeEach(function(){
 		s1 = randomStr();
 		s2 = randomStr();
@@ -133,10 +133,34 @@ describe('Task methods:', function(){
 		task4.removeTag("Pokemon");
 		expect(function() {task4.removeTag("Pokemon")}).to.throw(Error)
 	});
-	it("toggleTag changes the status of tags in a task", function(){
+	it("toggleTag changes the status of tags in a task", function() {
 		task4.toggleTag("algorithm");
 		expect(task4.hasTag("algorithm")).to.equal(true);
 		task4.toggleTag("algorithm");
 		expect(task4.hasTag("algorithm")).to.equal(false);
+	});
+	it("addTags can add multiple tags at the same time", function() {
+		task5 = Task.new();
+		arr = ["bob", "phill", "dave", "howard"];
+		task5.addTags(arr);
+		expect(task5.hasTag("bob")).to.equal(true);
+		expect(task5.hasTag("phill")).to.equal(true);
+		expect(task5.hasTag("dave")).to.equal(true);
+		expect(task5.hasTag("howard")).to.equal(true);
+	});
+	it("toggleTags toggles multiple tags at the same time", function() {
+		arr2 = ["web", "board", "guy", "verb"];
+		task6 = Task.new();
+		task6.toggleTags(arr2);
+		console.log(task6.tags);
+		expect(task6.hasTag("web")).to.equal(true);
+		expect(task6.hasTag("board")).to.equal(true);
+		expect(task6.hasTag("guy")).to.equal(true);
+		expect(task6.hasTag("verb")).to.equal(true);
+		task6.toggleTags(arr2);
+		expect(task6.hasTag("web")).to.equal(false);
+		expect(task6.hasTag("board")).to.equal(false);
+		expect(task6.hasTag("guy")).to.equal(false);
+		expect(task6.hasTag("verb")).to.equal(false);
 	})
 });
