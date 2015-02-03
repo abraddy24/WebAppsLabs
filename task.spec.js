@@ -133,4 +133,10 @@ describe('Task methods:', function(){
 		task4.removeTag("Pokemon");
 		expect(function() {task4.removeTag("Pokemon")}).to.throw(Error)
 	});
+	it("toggleTag changes the status of tags in a task", function(){
+		task4.toggleTag("algorithm");
+		expect(task4.hasTag("algorithm")).to.equal(true);
+		task4.toggleTag("algorithm");
+		expect(task4.hasTag("algorithm")).to.equal(false);
+	})
 });
