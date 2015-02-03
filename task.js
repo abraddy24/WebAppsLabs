@@ -109,7 +109,7 @@ proto = {
       var bool;
       bool = false;
       this.tags.forEach(function(tag, i){
-         if (tag == s){
+         if (tag === s){
             bool = true;
          }
       }, this);
@@ -120,7 +120,7 @@ proto = {
       "use strict";
       if (this.hasTag(s) === false){
          this.tags.push(s);
-      }else{
+      }else {
          throw new Error("tag already exists");
       }
       return this;
@@ -130,7 +130,7 @@ proto = {
       "use strict";
       if (this.hasTag(s) === true){
          this.tags.splice(this.tags.indexOf(s), 1);
-      }else{
+      }else {
          throw new Error("tag does not exist");
       }
    },
@@ -163,7 +163,7 @@ proto = {
       var c = Task.new();
       c.title = this.title;
       c.completedTime = this.completedTime;
-      c.tags = this.tags;
+      c.addTags(this.tags);
       return c;
    }
 };

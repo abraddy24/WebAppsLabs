@@ -93,7 +93,7 @@ describe('Your makeTaskFromString function', function() {
 });
 
 describe('Task methods:', function(){
-	var task1, task2, task3, task4, task5, task6, s1, s2, arr, arr2;
+	var task1, task2, task3, task4, task5, task6, task7, task8, s1, s2, arr, arr2, arr3;
 	beforeEach(function(){
 		s1 = randomStr();
 		s2 = randomStr();
@@ -125,13 +125,13 @@ describe('Task methods:', function(){
 	it("does not allow to add same key", function(){
 		task3 = Task.new();
 		task3.addTag("hello");
-		expect(function() {task3.addTag("hello")}).to.throw(Error);
+		expect(function() {task3.addTag("hello");}).to.throw(Error);
 	});
 	it("does not allow removal of nonexistant object", function(){
 		task4 = Task.new();
 		task4.addTag("Pokemon");
 		task4.removeTag("Pokemon");
-		expect(function() {task4.removeTag("Pokemon")}).to.throw(Error)
+		expect(function() {task4.removeTag("Pokemon");}).to.throw(Error);
 	});
 	it("toggleTag changes the status of tags in a task", function() {
 		task4.toggleTag("algorithm");
@@ -141,7 +141,7 @@ describe('Task methods:', function(){
 	});
 	it("addTags can add multiple tags at the same time", function() {
 		task5 = Task.new();
-		arr = ["bob", "phill", "dave", "howard"];
+		arr = [ "bob", "phill", "dave", "howard" ];
 		task5.addTags(arr);
 		expect(task5.hasTag("bob")).to.equal(true);
 		expect(task5.hasTag("phill")).to.equal(true);
@@ -149,10 +149,9 @@ describe('Task methods:', function(){
 		expect(task5.hasTag("howard")).to.equal(true);
 	});
 	it("toggleTags toggles multiple tags at the same time", function() {
-		arr2 = ["web", "board", "guy", "verb"];
+		arr2 = [ "web", "board", "guy", "verb" ];
 		task6 = Task.new();
 		task6.toggleTags(arr2);
-		console.log(task6.tags);
 		expect(task6.hasTag("web")).to.equal(true);
 		expect(task6.hasTag("board")).to.equal(true);
 		expect(task6.hasTag("guy")).to.equal(true);
@@ -162,5 +161,21 @@ describe('Task methods:', function(){
 		expect(task6.hasTag("board")).to.equal(false);
 		expect(task6.hasTag("guy")).to.equal(false);
 		expect(task6.hasTag("verb")).to.equal(false);
-	})
+	});
+	it("clone method actually clones a task properly", function(){
+		task7 = Task.new();
+		arr3 = [ "wayne", "bruce", "clark", "kent" ];
+		task7.addTags(arr3);
+		task7.title = "Seven"; 
+		expect(task7.hasTag("wayne")).to.equal(true);
+		expect(task7.hasTag("bruce")).to.equal(true);
+		expect(task7.hasTag("clark")).to.equal(true);
+		expect(task7.hasTag("kent")).to.equal(true);
+		task8 = task7.clone();
+		expect(task8.title).to.equal("Seven");
+		expect(task8.hasTag("wayne")).to.equal(true);
+		expect(task8.hasTag("bruce")).to.equal(true);
+		expect(task8.hasTag("clark")).to.equal(true);
+		expect(task8.hasTag("kent")).to.equal(true);
+	});
 });
