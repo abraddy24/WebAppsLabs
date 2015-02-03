@@ -93,7 +93,7 @@ describe('Your makeTaskFromString function', function() {
 });
 
 describe('Task methods:', function(){
-	var task1, task2, task3, s1, s2;
+	var task1, task2, task3, task4, s1, s2;
 	beforeEach(function(){
 		s1 = randomStr();
 		s2 = randomStr();
@@ -126,5 +126,11 @@ describe('Task methods:', function(){
 		task3 = Task.new();
 		task3.addTag("hello");
 		expect(function() {task3.addTag("hello")}).to.throw(Error);
+	});
+	it("does not allow removal of nonexistant object", function(){
+		task4 = Task.new();
+		task4.addTag("Pokemon");
+		task4.removeTag("Pokemon");
+		expect(function() {task4.removeTag("Pokemon")}).to.throw(Error)
 	});
 });
