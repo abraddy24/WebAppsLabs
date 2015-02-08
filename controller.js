@@ -191,6 +191,9 @@ var makeController = function(element) {
     * - Return true to allow propagation
     */
    function commitEditing(ev) {
+      if(ev.keyCode === 13 || ev.keyCode === 9){
+        
+      }
       return true;
    }
 
