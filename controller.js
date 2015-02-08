@@ -121,7 +121,6 @@ var makeController = function(element) {
     * - Return true to not prevent propagation.
     */
    function addNewTask(ev) {
-      console.log(newTaskHTML("add button pressed"));
       var str = "New Task " + (tasks.length + 1);
       tasks.push(str);
       $(newTaskHTML(str)).appendTo(el);
@@ -138,6 +137,10 @@ var makeController = function(element) {
     * - Return true to not prevent propagation.
     */
    function removeElement(ev) {
+      var r;
+      r = getIndex(getLi(ev.target));
+      tasks.splice(r, 1);
+      $("li").get(r).remove();
       return true;
    };
 
