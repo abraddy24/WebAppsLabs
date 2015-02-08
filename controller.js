@@ -86,7 +86,10 @@ var makeController = function(element) {
     * - Returns the list item
     */
    function disableEditMode(li) {
-
+      $(li).find("input").first().remove();
+      $(li).find("span").removeClass("hidden");
+      $(li).find("input").attr("class", "remove");
+      return li;
    }
 
    /*
@@ -202,7 +205,7 @@ var makeController = function(element) {
     */
    function checkForCancel(ev) {
       if (ev.keyCode !== 0x1B) { return true; }
-
+        disableEditMode(getLi(ev.target));
       return false;
    };
 
