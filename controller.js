@@ -121,6 +121,10 @@ var makeController = function(element) {
     * - Return true to not prevent propagation.
     */
    function addNewTask(ev) {
+      console.log(newTaskHTML("add button pressed"));
+      var str = "New Task " + (tasks.length + 1);
+      task.push(str);
+      $(newTaskHTML(str)).appendTo(el);
       return true;
    };
 
