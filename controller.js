@@ -11,13 +11,13 @@
  */
 var makeController = function(element) {
    "use strict";
-
+   var el, tasks;
    // el is a jQuery object wrapping "element", in case it wasn't a jQuery
    // object already.
-   var el = $(element);
+   el = $(element);
 
    // "tasks" is an array of strings for the tasks to be shown.
-   var tasks = [];
+   tasks = [];
 
    // add an "add" button right after the element
    addAddButton();
@@ -41,7 +41,8 @@ var makeController = function(element) {
     * an "input" button for "remove". See examples in sample.html
     */
    function newTaskHTML(str) {
-      return '<li><span>'+str+'</span><input type = "button" class = "remove" value = "Remove"></li>';
+      return "<li><span>" + str +
+              "</span><input type = \"button\" class = \"remove\" value = \"Remove\"></li>";
    }
 
    /*
@@ -50,7 +51,7 @@ var makeController = function(element) {
     * Use jQuery's "closest".
     */
    function getLi(ev) {
-      return $(ev).closest('li');
+      return $(ev).closest("li");
    }
 
    /*
@@ -73,7 +74,8 @@ var makeController = function(element) {
    function enableEditMode(li) {
       $(li).find("span").attr("class", "hidden");
       $(li).find("input").attr("class", "remove hidden");
-      $("<input>").attr("type", "text").attr("class", "edit").attr("value", "Task in edit mode").prependTo(li);
+      $("<input>").attr("type", "text")
+          .attr("class", "edit").attr("value", "Task in edit mode").prependTo(li);
       return li;
    }
 
@@ -114,7 +116,7 @@ var makeController = function(element) {
       $(button).insertAfter(el);
 
       // Bind clicking of the button to calling the addNewTask function.
-      $(button).on("click",addNewTask);
+      $(button).on("click", addNewTask);
 
       return this;
    }
@@ -131,7 +133,7 @@ var makeController = function(element) {
       tasks.push(str);
       $(newTaskHTML(str)).appendTo(el);
       return true;
-   };
+   }
 
    /*
     * This method triggers in response to clicking the button with class
@@ -148,7 +150,7 @@ var makeController = function(element) {
       tasks.splice(r, 1);
       $("li").get(r).remove();
       return true;
-   };
+   }
 
 
    /*
@@ -163,7 +165,7 @@ var makeController = function(element) {
    function editElement(ev) {
       enableEditMode(getLi(ev.target)).focus();
       return true;
-   };
+   }
 
    /*
     * This method happens when the text input where the user was editing a
@@ -190,7 +192,7 @@ var makeController = function(element) {
     */
    function commitEditing(ev) {
       return true;
-   };
+   }
 
    /*
     * This method is meant to react to the case where the user has pressed
@@ -204,10 +206,12 @@ var makeController = function(element) {
     * - Return "false" to prevent propagation in the case of an escape.
     */
    function checkForCancel(ev) {
-      if (ev.keyCode !== 0x1B) { return true; }
+      if (ev.keyCode !== 0x1B) {
+        return true;
+      }
         disableEditMode(getLi(ev.target));
       return false;
-   };
+   }
 
    /* You do not need to change anything below this line */
 
