@@ -71,7 +71,10 @@ var makeController = function(element) {
     * - Returns a reference to the jQuery wrapper of that edit element.
     */
    function enableEditMode(li) {
-
+      $(li).find("span").attr("class", "hidden");
+      $(li).find("input").attr("class", "remove hidden");
+      $("<input>").attr("type", "text").attr("class", "edit").attr("value", "Task in edit mode").prependTo(li);
+      return li;
    }
 
    /*
@@ -155,6 +158,7 @@ var makeController = function(element) {
     * - Return true to allow propagation.
     */
    function editElement(ev) {
+      enableEditMode(getLi(ev.target)).focus();
       return true;
    };
 
