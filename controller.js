@@ -50,7 +50,7 @@ var makeController = function(element) {
     * Use jQuery's "closest".
     */
    function getLi(ev) {
-
+      return $(ev).closest('li');
    }
 
    /*
@@ -59,7 +59,7 @@ var makeController = function(element) {
     * Use jQuery's "prevAll".
     */
    function getIndex(li) {
-
+      return $(li).prevAll().length;
    }
 
    /*
@@ -104,11 +104,11 @@ var makeController = function(element) {
       // Use jQuery syntax to create a new html element
       // Use appropriate append-type jQuery method to add it right after
       // "el"
-      button = $('<input type = "button" value = "New />');
-      button.insertAfter(el);
+      button = $("<input type =\"button\" value =\"New\" />");
+      $(button).insertAfter(el);
 
       // Bind clicking of the button to calling the addNewTask function.
-      button.click(addNewTask);
+      $(button).on("click",addNewTask);
 
       return this;
    }
@@ -123,7 +123,7 @@ var makeController = function(element) {
    function addNewTask(ev) {
       console.log(newTaskHTML("add button pressed"));
       var str = "New Task " + (tasks.length + 1);
-      task.push(str);
+      tasks.push(str);
       $(newTaskHTML(str)).appendTo(el);
       return true;
    };
