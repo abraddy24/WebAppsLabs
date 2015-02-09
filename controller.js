@@ -72,11 +72,13 @@ var makeController = function(element) {
     * - Returns a reference to the jQuery wrapper of that edit element.
     */
    function enableEditMode(li) {
+    if(!$(li).find("span").hasClass("hidden")){
       $(li).find("span").attr("class", "hidden");
       $(li).find("input").attr("class", "remove hidden");
       $("<input>").attr("type", "text")
           .attr("class", "edit").attr("value", "Task in edit mode").prependTo(li);
       return li;
+      }
    }
 
    /*
@@ -209,7 +211,7 @@ var makeController = function(element) {
     * - Return "false" to prevent propagation in the case of an escape.
     */
    function checkForCancel(ev) {
-      if (ev.keyCode !== 0x1B) {
+      if (ev.keyCode !== 0x1B ||) {
         return true;
       }
         disableEditMode(getLi(ev.target));
