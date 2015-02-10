@@ -72,7 +72,7 @@ var makeController = function(element) {
     * - Returns a reference to the jQuery wrapper of that edit element.
     */
    function enableEditMode(li) {
-    if(!$(li).find("span").hasClass("hidden")){
+    if (!$(li).find("span").hasClass("hidden")){
       $(li).find("span").attr("class", "hidden");
       $(li).find("input").attr("class", "remove hidden");
       $("<input>").attr("type", "text")
@@ -193,9 +193,13 @@ var makeController = function(element) {
     * - Return true to allow propagation
     */
    function commitEditing(ev) {
-      if(ev.keyCode === 13 || ev.keyCode === 9){
-        
-      }
+      var v, li;
+
+      li = getLi(ev.target);
+      v = $(li.find("input")).val();
+      tasks[ getIndex(li) ] = v;
+      $(li.find("span")).html(v);
+
       return true;
    }
 
@@ -211,7 +215,7 @@ var makeController = function(element) {
     * - Return "false" to prevent propagation in the case of an escape.
     */
    function checkForCancel(ev) {
-      if (ev.keyCode !== 0x1B ||) {
+      if (ev.keyCode !== 0x1B) {
         return true;
       }
         disableEditMode(getLi(ev.target));
