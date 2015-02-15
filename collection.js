@@ -43,6 +43,10 @@ proto = {
 		"use strict";
 		return this.values.length === 0;
 	},
+	get: function(arg) {
+		"use strict";
+		var i = searchInTasks(arg, this.values);
+		return i === -1 ? null : this.values[ i ];
 };
 
 
