@@ -12,9 +12,21 @@ Task = require("./task");
  *       Constructors
  */
 
-function makeNewCollection(arr) {
+function makeNewCollection(arr){
+    "use strict";
+    var c = Object.create(proto);
 
-};
+    Object.defineProperty(col, "values", {
+        writable: false,
+        value: []
+    });
+	if (Object.prototype.toString.call(arr) === "[object Array]"){
+		c.add(arr);
+	}
+    Object.preventExtensions(col);
+    return c;
+}
+}
 
 
 /*
@@ -22,9 +34,9 @@ function makeNewCollection(arr) {
  */
 
 proto = {
-   //Add instance methods here
+   // Add instance methods here
 
-}
+};
 
 
 
