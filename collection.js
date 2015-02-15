@@ -64,7 +64,48 @@ proto = {
 		}
 
 		return this;
+	},new: function() {
+		"use strict";
+		var t = Task.new();
+		this.add(t);
+		return t;
 	},
+	remove: function(id) {
+		"use strict";
+		var i;
+		if (Array.isArray(id)) {
+			for (i = id.length - 1; i >= 0; i -= 1) {
+				if (searchInTasks(id[ i ], this.values) !== -1) {
+					this.values.splice(i, 1);
+				}
+			}
+		} else {
+			i = searchInTasks(id, this.values);
+			this.values.splice(i, 1);
+		}
+		return this;
+	},
+	filter: function(id) {
+		"use strict";
+		var i, newCol = TaskCollection.new();
+		if (Array.isArray(id)) {
+			for (i = id.length - 1; i >= 0; i -= 1) {
+				if (searchInTasks(id[ i ], this.values) !== -1) {
+					newCol.add(this.values[ i ]);
+					continue;
+				}
+			}
+		}
+		return newCol;
+	},
+	forEach: function(f) {
+		"use strict";
+		var i;
+		for (i = f.length - 1; i >= 0; i -= 1) {
+			f(this.values[ i ]);
+		}
+		return this;
+   }
 };
 
 
