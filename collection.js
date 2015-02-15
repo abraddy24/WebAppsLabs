@@ -52,6 +52,19 @@ proto = {
 		"use strict";
 		return !(searchInTasks(arg, this.values) === -1);
 	},
+	add: function(t) {
+		"use strict";
+		var i;
+		if (Array.isArray(t)) {
+			for (i = t.length - 1; i >= 0; i -= 1) {
+				this.values.push(t[ i ]);
+			}
+		} else {
+			this.values.push(t);
+		}
+
+		return this;
+	},
 };
 
 
