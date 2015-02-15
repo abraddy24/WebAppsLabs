@@ -39,6 +39,10 @@ proto = {
 		"use strict";
 		return this.values.length;
 	},
+	isEmpty: function() {
+		"use strict";
+		return this.values.length === 0;
+	},
 };
 
 
