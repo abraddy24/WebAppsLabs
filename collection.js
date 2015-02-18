@@ -72,6 +72,21 @@ function argFunction(a){
     }
  }
 
+function tskPrint(t){
+    "use strict";
+    var s = t.title;
+    if (t.isCompleted()){
+        s = s + " " + t.completedTime;
+    }
+    if (t.hasTags()){
+        t.tags.forEach(function (item, i){
+        s = s + " #" + item;
+        });
+    }
+    s = s + "\n";
+    return s;
+}
+
 proto = {
    // Add instance methods here
     length: function() {
@@ -96,7 +111,7 @@ proto = {
             return false;
         }
         return true;
-   }, 
+   },
    add: function(t) {
         "use strict";
         var i;
@@ -109,7 +124,7 @@ proto = {
         }
 
         return this;
-    }, 
+    },
     new: function() {
         "use strict";
         var t = Task.new();
@@ -144,6 +159,13 @@ proto = {
     },
     print: function print(){
         "use strict";
+        var str = "";
+        if (!this.isEmpty()){
+            this.values.forEach(function (item, i){
+                str = str + tskPrint(item);
+            });
+        }
+        return str;
     },
     concat: function concat(coll){
         "use strict";
