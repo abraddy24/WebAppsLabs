@@ -39,19 +39,28 @@ function randomTasks(n){
 	return a;
 }
 
-describe('Your makeNewCollection function', function(){
+describe("Your makeNewCollection function", function(){
 	var c1, c2, tsks;
 	c1 = TaskCollection.new();
 	tsks = randomTasks(5);
 	c2 = TaskCollection.new(tsks);
-	it('returns an object', function(){
+	it("returns an object", function(){
 		expect(c1).to.be.a("object");
 	});
-	it('returns an object with correct key', function(){
+	it("returns an object with correct key", function(){
 		expect(c1).to.have.ownProperty("values");
 	});
-	it('sucessfully adds tasks when provided them', function(){
+	it("sucessfully adds tasks when provided them", function(){
 		expect(c1.isEmpty()).to.equal(true);
 		expect(c2.length()).to.equal(5);
+	});
+});
+
+describe("Your length function", function(){
+	var c, ts;
+	ts = randomTasks(10);
+	c = TaskCollection.new(ts);
+	it("properly calculates length", function(){
+		expect(c.length()).to.equal(10);
 	});
 });
