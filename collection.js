@@ -59,12 +59,6 @@ function argFunction(a){
     return -1;
  }
 
- function singleTaskAdd(task, own){
-    "use strict";
-    if (!own.has(task)){
-        own.values.push(task);
-    }
- }
  function singleTaskRemove(task, own){
     "use strict";
     if (!own.has(task)){
@@ -137,7 +131,7 @@ proto = {
             singleTaskRemove(item, this);
         }, this);
         return this;
-   },
+    },
     filter: function filter(arg){
         "use strict";
         var tsk = Task.new();
@@ -145,7 +139,7 @@ proto = {
             tsk.add(this.get(item));
         }, this);
         return tsk;
-   },
+    },
     forEach: function(f) {
         "use strict";
         var i;
@@ -156,7 +150,24 @@ proto = {
     },
     groupByTag: function groupByTag(){
         "use strict";
-    },
+        var obj, func, container;
+        obj = {};
+        container = Task.new();
+        func = function(tsk){
+            container.addTags(tsk.tags);
+        };
+        this.forEach(func);
+        container.tags.forEach(function (tag, i){
+            var arr = [];
+            this.values.forEach(function (task, i2){
+                if (task.hasTag(tag)){
+                    arr.push(task);
+                }
+            });
+            obj[ tag ] = TaskCollection.new(arr);
+        }, this);
+        return obj;
+   },
     print: function print(){
         "use strict";
         var str = "";
