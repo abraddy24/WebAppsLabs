@@ -64,3 +64,14 @@ describe("Your length function", function(){
 		expect(c.length()).to.equal(10);
 	});
 });
+
+describe("Your isEmpty function", function(){
+	var co1, co2;
+	t = randomTasks(6);
+	co1 = TaskCollection.new(t);
+	co2 = TaskCollection.new();
+	it("determines that a collection is empty when it should", function(){
+		expect(co1.isEmpty()).to.equal(false);
+		expect(co2.isEmpty()).to.equal(true);
+	});
+});
