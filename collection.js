@@ -105,8 +105,8 @@ proto = {
             return false;
         }
         return true;
-   },
-   add: function(t) {
+    },
+    add: function(t) {
         "use strict";
         var i;
         if (Array.isArray(t)) {
@@ -167,7 +167,7 @@ proto = {
             obj[ tag ] = TaskCollection.new(arr);
         }, this);
         return obj;
-   },
+    },
     print: function print(){
         "use strict";
         var str = "";
@@ -180,7 +180,11 @@ proto = {
     },
     concat: function concat(coll){
         "use strict";
-   }
+        coll.forEach(function (item, i){
+            this.add(item.values);
+        }, this);
+        return this;
+    }
 };
 
 
