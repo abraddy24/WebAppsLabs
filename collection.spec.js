@@ -111,3 +111,23 @@ describe("Your get function", function(){
 		expect(coll.get(/\d/).title).to.equal("12345");
 	});
 });
+
+
+describe("Your has function", function(){
+    var coll, tasks;
+    tasks = randomTasks(5);
+    coll = TaskCollection.new(tasks);
+    it("works when given a number", function(){
+        var id = tasks[3].id;
+        expect(coll.has(id)).to.equal(true);
+        expect(coll.has(id*3)).to.equal(false);
+    });
+    it("works when given a string", function(){
+        var str, title;
+        title = tasks[2].title;
+        str = "9*1This Will Not Be Generated@#45";
+        expect(coll.has(title)).to.equal(true);
+        expect(coll.has(str)).to.equal(false);
+    });
+});
+

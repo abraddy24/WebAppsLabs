@@ -96,12 +96,9 @@ proto = {
         var i = taskSearch(arg, this.values);
         return i === -1 ? null : this.values[ i ];
     },
-    has: function has(arg){
+    has: function(arg) {
         "use strict";
-        if (getIndex(arg, this) === -1){
-            return false;
-        }
-        return true;
+        return !(taskSearch(arg, this.values) === -1);
     },
     add: function(t) {
         "use strict";
