@@ -75,3 +75,39 @@ describe("Your isEmpty function", function(){
 		expect(co2.isEmpty()).to.equal(true);
 	});
 });
+
+describe("Your get function", function(){
+	var coll, tasks;
+	tasks = randomTasks(10);
+	coll = TaskCollection.new(tasks);
+	it('properly gets tasks when given a function', function(){
+		var t = [
+			Task.fromString("One #first #second"),
+			Task.fromString("Two #first #second #third"),
+			Task.fromString("Three #first"),
+		];
+		coll.add(t);
+		expect(coll.get(function(task) { return task.hasTag("third") }).title).to.equal("Two");
+	});
+	it('properly gets tasks when given a number', function(){
+		var id = tasks[7].id;
+		expect(coll.get(id)).to.equal(tasks[7]);
+		expect(coll.get(id*42)).to.equal(null);
+	});
+	it('properly gets tasks when given a string', function(){
+		var str, title;
+		title = tasks[7].title;
+		str = "9*1This Will Not Be Generated@#45";
+		expect(coll.get(title)).to.equal(tasks[7]);
+		expect(coll.get(str)).to.equal(null);
+	});
+	it('get returns the task that the title is a regular expression', function() {
+		var t = [
+			Task.fromString("One #first #second #third"),
+			Task.fromString("12345 #first #second"),
+			Task.fromString("Three #first"),
+		];
+		coll.add(t);
+		expect(coll.get(/\d/).title).to.equal("12345");
+	});
+});

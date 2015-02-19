@@ -47,17 +47,17 @@ function argFunction(a){
     }
  }
 
- function getIndex(arg, own){
+function taskSearch(tsk, arr){
     "use strict";
-    var i;
-    arg = argFunction(arg);
-    for (i = 0; i < own.lenght; i += 1){
-        if (arg(own.valuses [ i ])){
-            return i;
+    var i, f;
+    f = argFunction(tsk);
+    for (i = arr.length - 1; i >= 0; i -= 1){
+        if (f(arr[ i ])){
+            break;
         }
     }
-    return -1;
- }
+    return i === arr.length ? -1 : i;
+}
 
  function singleTaskRemove(task, own){
     "use strict";
@@ -91,13 +91,10 @@ proto = {
         "use strict";
         return this.values.length === 0;
     },
-    get: function get(arg){
+    get: function(arg) {
         "use strict";
-        var x = getIndex(arg, this);
-        if (x === -1){
-            return null;
-        }
-        return this.values[ x ];
+        var i = taskSearch(arg, this.values);
+        return i === -1 ? null : this.values[ i ];
     },
     has: function has(arg){
         "use strict";
