@@ -101,7 +101,7 @@ describe("Your get function", function(){
 		expect(coll.get(title)).to.equal(tasks[7]);
 		expect(coll.get(str)).to.equal(null);
 	});
-	it('get returns the task that the title is a regular expression', function() {
+	it.skip('properly returns the task title if it is a regular expression', function() {
 		var t = [
 			Task.fromString("One #first #second #third"),
 			Task.fromString("12345 #first #second"),
@@ -131,3 +131,20 @@ describe("Your has function", function(){
     });
 });
 
+describe("Your add, remove, and newTask functions", function(){
+	it('correctly implements add, remove, and newTask',function(){
+        var coll, coll2, tasks1, tasks2, id1;
+        tasks1 = randomTasks(1);
+        tasks2 = randomTasks(7);
+        id1 = tasks2[5].id;
+        coll = TaskCollection.new(tasks2);
+        expect(coll.has(id1)).to.equal(true);
+        coll.remove(id1);
+        expect(coll.length()).to.equal(6);
+        expect(coll.has(id1)).to.equal(false);
+
+        coll2 = TaskCollection.new(tasks1);
+        expect(coll.isEmpty()).to.equal(false);
+        expect(coll2.length()).to.equal(1);
+    });
+})

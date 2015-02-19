@@ -119,11 +119,19 @@ proto = {
         this.add(t);
         return t;
     },
-    remove: function remove(arg){
+    remove: function(id) {
         "use strict";
-        arg.forEach(function (item, i){
-            singleTaskRemove(item, this);
-        }, this);
+        var i;
+        if (Array.isArray(id)) {
+            for (i = id.length - 1; i >= 0; i -= 1) {
+                if (taskSearch(id[ i ], this.values) !== -1) {
+                    this.values.splice(i, 1);
+                }
+            }
+        } else {
+            i = taskSearch(id, this.values);
+            this.values.splice(i, 1);
+        }
         return this;
     },
     filter: function filter(arg){
