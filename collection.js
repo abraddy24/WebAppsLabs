@@ -134,13 +134,18 @@ proto = {
         }
         return this;
     },
-    filter: function filter(arg){
+    filter: function(id) {
         "use strict";
-        var tsk = Task.new();
-        arg.forEach(function (item, i){
-            tsk.add(this.get(item));
-        }, this);
-        return tsk;
+        var i, nC = TaskCollection.new();
+        if (Array.isArray(id)) {
+            for (i = id.length - 1; i >= 0; i -= 1) {
+                if (taskSearch(id[ i ], this.values) !== -1) {
+                    nC.add(this.values[ i ]);
+                    continue;
+                }
+            }
+        }
+        return nC;
     },
     forEach: function(f) {
         "use strict";

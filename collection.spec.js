@@ -148,3 +148,26 @@ describe("Your add, remove, and newTask functions", function(){
         expect(coll2.length()).to.equal(1);
     });
 })
+
+describe('Your filter and forEach functions',function(){
+    var coll, tasks;
+    coll = TaskCollection.new();
+    tasks = randomTasks(6);
+    it('filters if given an array of numbers',function(){
+        var coll2, id1;
+        id1 = tasks[1].id;
+        coll2 = coll.filter(id1);
+        expect(coll2.isEmpty()).to.equal(true);
+        expect(coll2.length()).to.equal(0);
+        expect(coll2.get(id1)).to.equal(tasks[1]);
+    });
+    it('filters given a string',function(){
+        var coll2, title1;
+        title1 = tasks[3].title;
+        coll2 = coll.filter(title1);
+        expect(coll2.isEmpty()).to.equal(true);
+        expect(coll2.length()).to.equal(0);
+        expect(coll2.get(title1)).to.equal(tasks[3]);
+    });
+
+});
