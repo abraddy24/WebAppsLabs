@@ -16,11 +16,9 @@ function makeNewList() {
    var lst, sentinel;
 
    lst = Object.create(proto);
-   sentinel = {
-      value: null,
-      next: sentinel,
-      prev: sentinel
-   };
+   sentinel = { value: null};
+   sentinel.next = sentinel;
+   sentinel.prev = sentinel;
    lst.sentinel = sentinel;
    return lst;
 }
@@ -32,6 +30,13 @@ function makeNewList() {
 
 proto = {
    // Add instance methods here
+   isEmpty: function isEmpty(){
+   		if(this.sentinel.next === this.sentinel && this.sentinel.prev === this.sentinel && this.sentinel.value === null){
+   			return true;
+   		}
+   	},
+   	
+   }
 
 };
 
