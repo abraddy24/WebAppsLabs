@@ -45,6 +45,12 @@ proto = {
    		}
    		return len;
    	},
+   	first: function first(){
+   		if(this.isEmpty()){
+   			throw "Cannot check on empty list";
+   		}
+   		return this.sentinel.next;
+   	},
    	
    }
 
