@@ -84,7 +84,18 @@ proto = {
    		}
    		retrun this;
    	},
-   	
+   	remove: function remove(item){
+   		var tmp = this.first();
+   		if(tmp.next === item){
+   			tmp.next = item.next;
+   			item.next.prev = tmp;
+   		}
+   		while(tmp.next !== item){
+   			tmp = tmp.next;
+   		}
+   		return item.value;
+   	},
+
    }
 
 };
