@@ -66,7 +66,11 @@ proto = {
    		return tmp;
    	},
    	unshift: function unshift(val){
-   		thsi.insertAt(val, this.sentinel.prev);
+   		this.insertAt(val, this.sentinel);
+   		return val;
+   	},
+   	push: functoin push(val){
+   		this.insertAt(val, this.sentinel.prev);
    		return val;
    	},
    	
