@@ -65,6 +65,10 @@ proto = {
    		node.next = tmp;
    		return tmp;
    	},
+   	unshift: function unshift(val){
+   		thsi.insertAt(val, this.sentinel.prev);
+   		return val;
+   	},
    	
    }
 
