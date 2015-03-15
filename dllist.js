@@ -57,6 +57,14 @@ proto = {
    		}
    		return this.sentinel.prev;
    	},
+   	insertAt: function insertAt(val, node){
+   		var tmp = {value: val, next: null, prev: null};
+   		tmp.next = node.next;
+   		tmp.prev = node;
+   		node.next.prev = tmp;
+   		node.next = tmp;
+   		return tmp;
+   	},
    	
    }
 
