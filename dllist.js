@@ -73,6 +73,17 @@ proto = {
    		this.insertAt(val, this.sentinel.prev);
    		return val;
    	},
+   	endAt: function endAt(item){
+   		var tmp = this.sentinel;
+   		if(tmp === tmp){
+   			tmp.next = this.sentinel;
+   			this.sentinel.prev = tmp;
+   		}
+   		while(tmp !== item){
+   			tmp = tmp.next;
+   		}
+   		retrun this;
+   	},
    	
    }
 
