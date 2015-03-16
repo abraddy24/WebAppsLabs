@@ -36,7 +36,13 @@ add: function add(cmd){
 		}
 		this.list.endAt(this.current);
 		cmd.execute();
-	},
+},
+canRedo: function canRedo(){
+		if (this.list.isEmpty()){
+			return false;
+		}
+		return this.current.next.value !== null;
+},
 };
 
 
