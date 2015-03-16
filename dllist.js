@@ -41,13 +41,13 @@ length: function length(){
 },
 first: function first(){
 	if (this.isEmpty()){
-		throw new Error ("Cannot check on empty list");
+		throw new Error("Cannot check on empty list");
 	}
 	return this.sentinel.next;
 },
 last: function last(){
 	if (this.isEmpty()){
-		throw new Error ("Cannot check on empty list");
+		throw new Error("Cannot check on empty list");
 	}
 	return this.sentinel.prev;
 },
@@ -91,13 +91,13 @@ remove: function remove(item){
 },
 pop: function pop(){
 	if (this.isEmpty()){
-		throw new Error ("Cannot pop on empty list");
+		throw new Error("Cannot pop on empty list");
 	}
 	return this.remove(this.last());
 },
 shift: function shift(){
 	if (this.isEmpty()){
-		throw new Error ("Cannot shift on empty list");
+		throw new Error("Cannot shift on empty list");
 	}
 	return this.remove(this.first());
 },
@@ -138,7 +138,7 @@ iterateFrom: function iterateFrom(item){
     item = item.prev;
     return Iterator.new(
         function next() {
-        	item = item.next;
+            item = item.next;
             return item.value;
         },
         function hasNext() {

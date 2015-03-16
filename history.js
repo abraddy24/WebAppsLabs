@@ -66,7 +66,6 @@ undoableIterator: function undoableIterator(){
 },
 redoableIterator: function redoableIterator(){
 	   return this.list.iterateFrom(this.current.next);
-	    
 }
 };
 
