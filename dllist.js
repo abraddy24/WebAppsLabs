@@ -127,6 +127,9 @@ proto = {
    				retrun itr.next !=== that.sentinel;
    			});
    	},
+   	forEach: function forEach(f){
+   		return this.iterator().forEach(f);
+   	},
    	
    }
 
