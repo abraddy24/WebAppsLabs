@@ -43,6 +43,9 @@ canRedo: function canRedo(){
 		}
 		return this.current.next.value !== null;
 },
+canUndo: function canUndo(){
+		return !this.list.isEmpty();
+},
 };
 
 
