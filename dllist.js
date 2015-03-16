@@ -95,7 +95,10 @@ proto = {
    		}
    		return item.value;
    	},
-
+   	pop: function pop(){
+   		return this.reomve(this.last);
+   	},
+   	
    }
 
 };
