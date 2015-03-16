@@ -128,31 +128,31 @@ toArray: function toArray(){
 	return this.iterator().toArray();
 },
 iterateFrom: function iterateFrom(item){
-	var that = this;
-	item = item.prev;
-	return Iterator.new(
-		function next(){
-			item = item.next;
-			return item.value;
-		},
-		function hasNext(){
-			return item.next !== that.sentinel;
-		}
-	);
+    var that = this;
+    item = item.prev;
+    return Iterator.new(
+        function next() {
+        	item = item.next;
+            return item.value;
+        },
+        function hasNext() {
+            return item.next !== that.sentinel;
+        }
+    );
 },
-reverseIterateFrom: function reverseiterateFrom(item){
+reverseIterateFrom: function reverseIterateFrom(item){
 	var that = this;
-	item = item.next;
-	return Iterator.new(
-		function next(){
-			item = item.prev;
-			return item.value;
-		},
-		function hasNext(){
-			return item.prev !== that.sentinel;
-		}
-	);
-}
+    item = item.next;
+    return Iterator.new(
+        function next() {
+        	item = item.prev;
+            return item.value;
+        },
+        function hasNext() {
+            return item.prev !== that.sentinel;
+        }
+    );
+   }
 };
 // DO NOT MODIFY ANYTHING BELOW THIS LINE
 DLList = {
