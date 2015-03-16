@@ -26,7 +26,17 @@ function makeNewHistory() {
 
 proto = {
    // Add instance methods here
-
+add: function add(cmd){
+		if (this.current === null){
+			this.list.unshift(cmd);
+			this.current = this.list.first();
+		}else {
+			this.list.insertAt(cmd, this.current);
+			this.current = this.current.next;
+		}
+		this.list.endAt(this.current);
+		cmd.execute();
+	},
 };
 
 
