@@ -64,7 +64,10 @@ undo: function undo(){
 undoableIterator: function undoableIterator(){
 	    return this.list.reverseIterateFrom(this.current);
 },
-
+redoableIterator: function redoableIterator(){
+	   return this.list.iterateFrom(this.current.next);
+	    
+}
 };
 
 
