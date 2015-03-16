@@ -114,6 +114,19 @@ proto = {
    		}
    		return false;
    	},
+   	iterator: function iterator(){
+   		var itr, that;
+   		itr = this.sentinel;
+   		that = this;
+   		return Iterator.new(
+   			function next(){
+   				itr = itr.next;
+   				return itr.value;
+   			},
+   			function hasNext(){
+   				retrun itr.next !=== that.sentinel;
+   			});
+   	},
    	
    }
 
