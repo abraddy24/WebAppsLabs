@@ -54,6 +54,13 @@ redo: function redo(){
 			throw new Error("Cannot Redo this");
 		}
 },
+undo: function undo(){
+		if (this.current === null){
+			throw new Error("current does not exits");
+		}
+		this.current.value.unexecute();
+		this.current = this.current.prev;
+},
 };
 
 
