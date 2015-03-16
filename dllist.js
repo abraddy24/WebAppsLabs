@@ -108,6 +108,12 @@ proto = {
    		}
    		return false;
    	},
+   	isLast: function isLast(item){
+   		if(this.last() === item){
+   			return true;
+   		}
+   		return false;
+   	},
    	
    }
 
