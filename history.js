@@ -46,6 +46,14 @@ canRedo: function canRedo(){
 canUndo: function canUndo(){
 		return !this.list.isEmpty();
 },
+redo: function redo(){
+		if (this.canRedo()){
+			this.current = this.current.next;
+			this.current.value.execute();
+		} else {
+			throw new Error("Cannot Redo this");
+		}
+},
 };
 
 
