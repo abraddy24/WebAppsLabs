@@ -130,6 +130,9 @@ proto = {
    	forEach: function forEach(f){
    		return this.iterator().forEach(f);
    	},
+   	toArray: function toArray(){
+   		return this.iterator().toArray();
+   	},
    	
    }
 
