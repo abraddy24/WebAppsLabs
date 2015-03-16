@@ -133,6 +133,19 @@ proto = {
    	toArray: function toArray(){
    		return this.iterator().toArray();
    	},
+   	iterateFrom: function iterateFrom(item){
+   		var that = this;
+   		item = item.prev;
+   		return Iteratior.new({
+   			function next(){
+   				item = item.next;
+   				return item.value;
+   			},
+   			function hasNext(){
+   				return item.next !== that.sentinel;
+   			}
+   		});
+   	},
    	
    }
 
