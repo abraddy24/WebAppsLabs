@@ -40,7 +40,7 @@ proto = {
    		var len; temp;
    		len = 0;
    		temp = this.sentinel;
-   		while(temp.next !=== this.sentinel){
+   		while(temp.next !== this.sentinel){
    			len += 1;
    			temp = temp.next;
    		}
@@ -70,7 +70,7 @@ proto = {
    		this.insertAt(val, this.sentinel);
    		return val;
    	},
-   	push: functoin push(val){
+   	push: function push(val){
    		this.insertAt(val, this.sentinel.prev);
    		return val;
    	},
@@ -83,7 +83,7 @@ proto = {
    		while(tmp !== item){
    			tmp = tmp.next;
    		}
-   		retrun this;
+   		return this;
    	},
    	remove: function remove(item){
    		var tmp = this.first();
@@ -124,7 +124,7 @@ proto = {
    				return itr.value;
    			},
    			function hasNext(){
-   				retrun itr.next !=== that.sentinel;
+   				return itr.next !== that.sentinel;
    			});
    	},
    	forEach: function forEach(f){
@@ -136,7 +136,7 @@ proto = {
    	iterateFrom: function iterateFrom(item){
    		var that = this;
    		item = item.prev;
-   		return Iteratior.new({
+   		return Iteratior.new(
    			function next(){
    				item = item.next;
    				return item.value;
@@ -144,11 +144,21 @@ proto = {
    			function hasNext(){
    				return item.next !== that.sentinel;
    			}
-   		});
+   		);
    	},
-   	
-   }
-
+   	reverseIterateFrom: function reverseiterateFrom(item){
+   		var that = this;
+   		item = item.next;
+   		return Iteratior.new(
+   			function next(){
+   				item = item.prev;
+   				return item.value;
+   			},
+   			function hasNext(){
+   				return item.prev !== that.sentinel;
+   			}
+   		);
+   	}
 };
 
 
