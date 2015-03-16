@@ -41,13 +41,13 @@ length: function length(){
 },
 first: function first(){
 	if (this.isEmpty()){
-		throw "Cannot check on empty list";
+		throw new Error ("Cannot check on empty list");
 	}
 	return this.sentinel.next;
 },
 last: function last(){
 	if (this.isEmpty()){
-		throw "Cannot check on empty list";
+		throw new Error ("Cannot check on empty list");
 	}
 	return this.sentinel.prev;
 },
@@ -69,30 +69,36 @@ push: function push(val){
 },
 endAt: function endAt(item){
 	var tmp = this.sentinel;
+	while (tmp !== item){
+		tmp = tmp.next;
+	}
 	if (tmp === item){
 		tmp.next = this.sentinel;
 		this.sentinel.prev = tmp;
-	}
-	while (tmp !== item){
-		tmp = tmp.next;
 	}
 	return this;
 },
 remove: function remove(item){
 	var tmp = this.first();
+	while (tmp.next !== item){
+		tmp = tmp.next;
+	}
 	if (tmp.next === item){
 		tmp.next = item.next;
 		item.next.prev = tmp;
 	}
-	while (tmp.next !== item){
-		tmp = tmp.next;
-	}
 	return item.value;
 },
 pop: function pop(){
-	return this.reomve(this.last);
+	if (this.isEmpty()){
+		throw new Error ("Cannot pop on empty list");
+	}
+	return this.remove(this.last());
 },
 shift: function shift(){
+	if (this.isEmpty()){
+		throw new Error ("Cannot shift on empty list");
+	}
 	return this.remove(this.first());
 },
 isFirst: function isFirst(item){

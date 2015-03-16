@@ -140,8 +140,8 @@ describe("Your isFist, isLast, iterator, and for each fucntions", function(){
       expect(list.isFirst(list.sentinel.next)).to.equal(true);
       expect(list.isFirst(list.sentinel.prev)).to.equal(false);
       list.unshift(8);
-      expect(list.isFirst(list.sentinel.prev)).to.equal(true);
-      expect(list.isFirst(list.sentinel.next)).to.equal(false);
+      expect(list.isFirst(list.sentinel.prev)).to.equal(false);
+      expect(list.isFirst(list.sentinel.next)).to.equal(true);
   });
   it("isLast is true when argument is the last item", function(){
       list.push(8);
@@ -151,7 +151,7 @@ describe("Your isFist, isLast, iterator, and for each fucntions", function(){
   });
   it("iterator returns an iterator for the dllist", function(){
       var itr = list.iterator();
-      expect(it.hasNext()).to.equal(false);
+      expect(itr.hasNext()).to.equal(false);
       list.push(1);
       list.push(2);
       itr = list.iterator();
@@ -180,7 +180,7 @@ describe("Your toArray, itrateFrom, and reverseIterateFrom functions", function(
       list.push(5);
       list.push(9);
       list.push(5);
-      list.ushift(7);
+      list.unshift(7);
       expect(list.toArray()[ 0 ]).to.equal(7);
       expect(list.toArray()[ 1 ]).to.equal(5);
   });
