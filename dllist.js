@@ -34,6 +34,7 @@ proto = {
    		if(this.sentinel.next === this.sentinel && this.sentinel.prev === this.sentinel && this.sentinel.value === null){
    			return true;
    		}
+   		return false;
    	},
    	length: function length(){
    		var len; temp;
@@ -100,6 +101,12 @@ proto = {
    	},
    	shift: function shift(){
    		return this.remove(this.first());
+   	},
+   	isFirst: function isFirst(item){
+   		if(this.first() === item){
+   			return true;
+   		}
+   		return false;
    	},
    	
    }
