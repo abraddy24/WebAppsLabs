@@ -98,6 +98,9 @@ proto = {
    	pop: function pop(){
    		return this.reomve(this.last);
    	},
+   	shift: function shift(){
+   		return this.remove(this.first());
+   	},
    	
    }
 
